@@ -1,0 +1,71 @@
+{
+  "as_hr_02": {
+    "title": "Health & Fitness Report",
+    "template": "as_hr_02.ejs",
+    "sections": [
+      {
+        "id": "key_body_vitals",
+        "title": "Key Body Vitals",
+        "fields": [
+          { "label": "Overall Health Score", "path": "accuracy" },
+          { "label": "Heart Rate", "path": "vitalsMap.vitals.heart_rate", "classify": "heart_rate" },
+          { "label": "BP Systolic", "path": "vitalsMap.vitals.bp_sys" },
+          { "label": "BP Diastolic", "path": "vitalsMap.vitals.bp_dia" }
+        ]
+      },
+      {
+        "id": "fitness_levels",
+        "title": "Fitness Levels",
+        "fields": [
+          { "label": "Jog Time (s)", "path": "exercises[id=235].setList[0].time" },
+          { "label": "Squat Reps", "path": "exercises[id=259].setList[0].additionalFields[fieldName=reps].fieldValue" }
+        ]
+      },
+      {
+        "id": "body_composition",
+        "title": "Body Composition",
+        "fields": [
+          { "label": "BMI", "path": "bodyCompositionData.BMI", "classify": "bmi" },
+          { "label": "Body Fat", "path": "bodyCompositionData.BFC" }
+        ]
+      },
+      {
+        "id": "posture",
+        "title": "Posture Analysis",
+        "fields": [
+          { "label": "Frontal Analysis Score", "path": "exercises[id=73].analysisScore" },
+          { "label": "Side Analysis Score", "path": "exercises[id=74].analysisScore" }
+        ]
+      }
+    ]
+  },
+  "as_card_01": {
+    "title": "Cardiac Assessment Report",
+    "template": "as_card_01.ejs",
+    "sections": [
+      {
+        "id": "key_body_vitals",
+        "title": "Key Body Vitals",
+        "fields": [
+          { "label": "Overall Health Score", "path": "accuracy" },
+          { "label": "Heart Rate", "path": "vitalsMap.vitals.heart_rate", "classify": "heart_rate" },
+          { "label": "BP Systolic", "path": "vitalsMap.vitals.bp_sys" }
+        ]
+      },
+      {
+        "id": "cardio_endurance",
+        "title": "Cardiovascular Endurance",
+        "fields": [
+          { "label": "Jog Time (s)", "path": "exercises[id=235].setList[0].time" }
+        ]
+      },
+      {
+        "id": "body_composition",
+        "title": "Body Composition",
+        "fields": [
+          { "label": "BMI", "path": "bodyCompositionData.BMI", "classify": "bmi" }
+        ]
+      }
+    ]
+  }
+}

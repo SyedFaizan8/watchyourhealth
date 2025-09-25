@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title><%= meta.title || 'Assessment Report' %> - <%= meta.session_id %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; padding: 24px; color: #111; }
+      h1 { font-size: 20px; margin-bottom: 12px; }
+      h2 { font-size: 16px; margin-top: 18px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+      .field { margin: 6px 0; }
+      .label { font-weight: 600; }
+      .class { font-style: italic; color: #666; margin-left: 8px; }
+      /* ensure background prints */
+      html,body { background: #fff; -webkit-print-color-adjust: exact; }
+    </style>
+  </head>
+  <body>
+    <h1><%= meta.title %></h1>
+    <p><strong>Session:</strong> <%= meta.session_id %> &nbsp; | &nbsp; <strong>Assessment:</strong> <%= meta.assessment_id %></p>
+
+    <!-- Debug line you can remove later: shows number of sections -->
+    <div style="margin:8px 0; font-size:12px; color:#666;">Sections: <%= (sections && sections.length) || 0 %></div>
+
+    <% if (sections && sections.length) { %>
+      <% sections.forEach(function(s){ %>
+        <h2><%= s.title %></h2>
+        <% if (s.fields && s.fields.length) { %>
+          <% s.fields.forEach(function(f){ %>
+            <div class="field">
+              <span class="label"><%= f.label %>:</span>
+              <span class="value"> <%= f.value ?? '' %> </span>
+              <% if (f.classification) { %> <span class="class">(<%= f.classification %>)</span> <% } %>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <div style="font-size:13px;color:#666">No fields configured for this section.</div>
+        <% } %>
+      <% }); %>
+    <% } else { %>
+      <div style="font-size:14px;color:#666">No sections to display for this assessment.</div>
+    <% } %>
+  </body>
+</html>
